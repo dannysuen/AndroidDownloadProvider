@@ -40,6 +40,7 @@ public class DownloadItem extends RelativeLayout {
 
     static interface DownloadSelectListener {
         public void onDownloadSelectionChanged(long downloadId, boolean isSelected);
+
         public boolean isDownloadSelected(long id);
     }
 
@@ -81,7 +82,7 @@ public class DownloadItem extends RelativeLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         boolean handled = false;
-        switch(event.getAction()) {
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (event.getX() < CHECKMARK_AREA) {
                     mIsInDownEvent = true;

@@ -28,10 +28,10 @@ import java.util.regex.Pattern;
 
 /**
  * Tools for managing files.  Not for public consumption.
+ *
  * @hide
  */
-public class FileUtils
-{
+public class FileUtils {
     public static final int S_IRWXU = 00700;
     public static final int S_IRUSR = 00400;
     public static final int S_IWUSR = 00200;
@@ -46,10 +46,11 @@ public class FileUtils
     public static final int S_IROTH = 00004;
     public static final int S_IWOTH = 00002;
     public static final int S_IXOTH = 00001;
-    
-    
+
+
     /**
      * File status information. This class maps directly to the POSIX stat structure.
+     *
      * @hide
      */
     public static final class FileStatus {
@@ -67,26 +68,31 @@ public class FileUtils
         public long mtime;
         public long ctime;
     }
-    
+
     /**
-     * Get the status for the given path. This is equivalent to the POSIX stat(2) system call. 
-     * @param path The path of the file to be stat'd.
+     * Get the status for the given path. This is equivalent to the POSIX stat(2) system call.
+     *
+     * @param path   The path of the file to be stat'd.
      * @param status Optional argument to fill in. It will only fill in the status if the file
-     * exists. 
-     * @return true if the file exists and false if it does not exist. If you do not have 
+     *               exists.
+     * @return true if the file exists and false if it does not exist. If you do not have
      * permission to stat the file, then this method will return false.
      */
     public static native boolean getFileStatus(String path, FileStatus status);
 
-    /** Regular expression for safe filenames: no spaces or metacharacters */
+    /**
+     * Regular expression for safe filenames: no spaces or metacharacters
+     */
     private static final Pattern SAFE_FILENAME_PATTERN = Pattern.compile("[\\w%+,./=_-]+");
 
     public static native int setPermissions(String file, int mode, int uid, int gid);
 
     public static native int getPermissions(String file, int[] outPermissions);
 
-    /** returns the FAT file system volume ID for the volume mounted 
+    /**
+     * returns the FAT file system volume ID for the volume mounted
      * at the given mount point, or -1 for failure
+     *
      * @param mount point for FAT volume
      * @return volume ID or -1
      */
@@ -115,7 +121,7 @@ public class FileUtils
             InputStream in = new FileInputStream(srcFile);
             try {
                 result = copyToFile(in, destFile);
-            } finally  {
+            } finally {
                 in.close();
             }
         } catch (IOException e) {
@@ -123,7 +129,7 @@ public class FileUtils
         }
         return result;
     }
-    
+
     /**
      * Copy data from a source stream to destFile.
      * Return true if succeed, return false if failed.
@@ -156,7 +162,8 @@ public class FileUtils
 
     /**
      * Check if a filename is "safe" (no metacharacters or spaces).
-     * @param file  The file to check
+     *
+     * @param file The file to check
      */
     public static boolean isFilenameSafe(File file) {
         // Note, we check whether it matches what's known to be safe,
@@ -167,8 +174,9 @@ public class FileUtils
 
     /**
      * Read a text file into a String, optionally limiting the length.
-     * @param file to read (will not seek, so things like /proc files are OK)
-     * @param max length (positive for head, negative of tail, 0 for no limit)
+     *
+     * @param file     to read (will not seek, so things like /proc files are OK)
+     * @param max      length (positive for head, negative of tail, 0 for no limit)
      * @param ellipsis to add of the file was truncated (can be null)
      * @return the contents of the file, possibly truncated
      * @throws IOException if something goes wrong reading the file
@@ -191,7 +199,9 @@ public class FileUtils
                 byte[] last = null, data = null;
                 do {
                     if (last != null) rolled = true;
-                    byte[] tmp = last; last = data; data = tmp;
+                    byte[] tmp = last;
+                    last = data;
+                    data = tmp;
                     if (data == null) data = new byte[-max];
                     len = input.read(data);
                 } while (len == data.length);

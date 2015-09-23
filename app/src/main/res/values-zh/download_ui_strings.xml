@@ -24,7 +24,7 @@
     <string name="download_menu_sort_by_date" msgid="4300882048968609945">"按时间排序"</string>
     <string name="download_queued" msgid="104973307780629904">"已加入队列"</string>
     <string name="download_running" msgid="4656462962155580641">"正在下载"</string>
-    <string name="download_paused">暂停</string> 
+    <string name="download_paused">暂停</string>
     <string name="download_success" msgid="7006048006543495236">"已完成"</string>
     <string name="download_error" msgid="3107369653921738690">"下载失败"</string>
     <string name="dialog_title_not_available" msgid="4479021195995400471">"下载失败"</string>

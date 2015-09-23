@@ -101,7 +101,8 @@ public class DownloadReceiver extends BroadcastReceiver {
 
     /**
      * Hide a system notification for a download.
-     * @param uri URI to update the download
+     *
+     * @param uri    URI to update the download
      * @param cursor Cursor for reading the download's fields
      */
     private void hideNotification(Context context, Uri uri, Cursor cursor) {
@@ -128,7 +129,7 @@ public class DownloadReceiver extends BroadcastReceiver {
     private void openDownload(Context context, Cursor cursor) {
         String filename = cursor.getString(cursor.getColumnIndexOrThrow(Downloads._DATA));
         String mimetype =
-            cursor.getString(cursor.getColumnIndexOrThrow(Downloads.COLUMN_MIME_TYPE));
+                cursor.getString(cursor.getColumnIndexOrThrow(Downloads.COLUMN_MIME_TYPE));
         Uri path = Uri.parse(filename);
         // If there is no scheme, then it must be a file
         if (path.getScheme() == null) {
@@ -147,6 +148,7 @@ public class DownloadReceiver extends BroadcastReceiver {
 
     /**
      * Notify the owner of a running download that its notification was clicked.
+     *
      * @param intent the broadcast intent sent by the notification manager
      * @param cursor Cursor for reading the download's fields
      */

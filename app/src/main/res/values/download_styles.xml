@@ -15,6 +15,7 @@
 -->
 
 <resources>
+
     <style name="Theme.Translucent" parent="android:style/Theme.Translucent">
         <item name="android:windowNoTitle">true</item>
     </style>

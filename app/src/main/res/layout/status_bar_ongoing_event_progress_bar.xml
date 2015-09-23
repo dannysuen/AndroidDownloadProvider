@@ -18,15 +18,15 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@android:drawable/status_bar_item_app_background"
-    android:orientation="vertical" >
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@android:drawable/status_bar_item_app_background"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="40dp"
@@ -34,21 +34,21 @@
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <ImageView
                 android:id="@+id/appIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@android:drawable/sym_def_app_icon" />
+                android:src="@android:drawable/sym_def_app_icon"/>
 
             <TextView
                 android:id="@+id/progress_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:singleLine="true" />
+                android:singleLine="true"/>
         </LinearLayout>
 
         <RelativeLayout
@@ -56,7 +56,7 @@
             android:layout_height="fill_parent"
             android:clickable="true"
             android:focusable="true"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -65,21 +65,21 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal"
-                android:paddingTop="10dp" >
+                android:paddingTop="10dp">
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="2dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"/>
 
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"/>
             </LinearLayout>
             <!-- Only one of progress_bar and paused_text will be visible. -->
 
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:paddingBottom="8dp"
-                android:paddingRight="25dp" />
+                android:paddingRight="25dp"/>
 
             <TextView
                 android:id="@+id/paused_text"
@@ -99,13 +99,13 @@
                 android:layout_alignParentBottom="true"
                 android:paddingBottom="8dp"
                 android:paddingLeft="5dp"
-                android:singleLine="true" />
+                android:singleLine="true"/>
         </RelativeLayout>
     </LinearLayout>
 
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/divider_horizontal_bright" />
+        android:src="@android:drawable/divider_horizontal_bright"/>
 
 </LinearLayout>

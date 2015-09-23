@@ -34,7 +34,7 @@ public class DateSortedDownloadAdapter extends DateSortedExpandableListAdapter {
     private DownloadAdapter mDelegate;
 
     public DateSortedDownloadAdapter(Context context, Cursor cursor,
-            DownloadSelectListener selectionListener) {
+                                     DownloadSelectListener selectionListener) {
         super(context, cursor,
                 cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_LAST_MODIFIED_TIMESTAMP));
         mDelegate = new DownloadAdapter(context, cursor, selectionListener);
@@ -42,7 +42,7 @@ public class DateSortedDownloadAdapter extends DateSortedExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition,
-                boolean isLastChild, View convertView, ViewGroup parent) {
+                             boolean isLastChild, View convertView, ViewGroup parent) {
         // The layout file uses a RelativeLayout, whereas the GroupViews use TextView.
         if (null == convertView || !(convertView instanceof RelativeLayout)) {
             convertView = mDelegate.newView();

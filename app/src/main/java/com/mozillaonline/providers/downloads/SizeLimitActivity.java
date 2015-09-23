@@ -94,7 +94,7 @@ public class SizeLimitActivity extends Activity
         String sizeString = Formatter.formatFileSize(this, size);
         String queueText = getString(R.string.button_queue_for_wifi);
         boolean isWifiRequired =
-            mCurrentIntent.getExtras().getBoolean(DownloadInfo.EXTRA_IS_WIFI_REQUIRED);
+                mCurrentIntent.getExtras().getBoolean(DownloadInfo.EXTRA_IS_WIFI_REQUIRED);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         if (isWifiRequired) {
@@ -131,7 +131,7 @@ public class SizeLimitActivity extends Activity
         } else if (!isRequired && which == AlertDialog.BUTTON_POSITIVE) {
             ContentValues values = new ContentValues();
             values.put(Downloads.COLUMN_BYPASS_RECOMMENDED_SIZE_LIMIT, true);
-            getContentResolver().update(mCurrentUri, values , null, null);
+            getContentResolver().update(mCurrentUri, values, null, null);
         }
         dialogClosed();
     }

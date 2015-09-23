@@ -79,7 +79,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
     }
 
     public DateSortedExpandableListAdapter(Context context, Cursor cursor,
-            int dateIndex) {
+                                           int dateIndex) {
         mContext = context;
         mDateSorter = new DateSorter(context);
         mObservers = new Vector<DataSetObserver>();
@@ -131,6 +131,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
      * has already been moved to the correct position.  Along with
      * {@link #getInt} and {@link #getString}, these are provided so the client
      * does not need to access the Cursor directly
+     *
      * @param cursorIndex Index to query the Cursor.
      * @return corresponding byte array from the Cursor.
      */
@@ -147,6 +148,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
      * already been moved to the correct position.  Along with
      * {@link #getBlob} and {@link #getString}, these are provided so the client
      * does not need to access the Cursor directly
+     *
      * @param cursorIndex Index to query the Cursor.
      * @return corresponding integer from the Cursor.
      */
@@ -167,6 +169,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
      * already been moved to the correct position.  Along with
      * {@link #getInt} and {@link #getInt}, these are provided so the client
      * does not need to access the Cursor directly
+     *
      * @param cursorIndex Index to query the Cursor.
      * @return corresponding String from the Cursor.
      */
@@ -176,12 +179,15 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
 
     /**
      * Determine which group an item belongs to.
+     *
      * @param childId ID of the child view in question.
      * @return int Group position of the containing group.
-    /* package */ int groupFromChildId(long childId) {
+     * /* package
+     */
+    int groupFromChildId(long childId) {
         int group = -1;
         for (mCursor.moveToFirst(); !mCursor.isAfterLast();
-                mCursor.moveToNext()) {
+             mCursor.moveToNext()) {
             if (getLong(mIdIndex) == childId) {
                 int bin = mDateSorter.getIndex(getLong(mDateIndex));
                 // bin is the same as the group if the number of bins is the
@@ -202,6 +208,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
      * Translates from a group position in the ExpandableList to a bin.  This is
      * necessary because some groups have no history items, so we do not include
      * those in the ExpandableList.
+     *
      * @param groupPosition Position in the ExpandableList's set of groups
      * @return The corresponding bin that holds that group.
      */
@@ -230,6 +237,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
 
     /**
      * Move the cursor to the position indicated.
+     *
      * @param packedPosition Position in packed position representation.
      * @return True on success, false otherwise.
      */
@@ -247,13 +255,14 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
 
     /**
      * Move the cursor the the position indicated.
+     *
      * @param groupPosition Index of the group containing the desired item.
      * @param childPosition Index of the item within the specified group.
      * @return boolean False if the cursor is closed, so the Cursor was not
-     *      moved.  True on success.
+     * moved.  True on success.
      */
     /* package */ boolean moveCursorToChildPosition(int groupPosition,
-            int childPosition) {
+                                                    int childPosition) {
         if (mCursor.isClosed()) return false;
         groupPosition = groupPositionToBin(groupPosition);
         int index = childPosition;
@@ -271,7 +280,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
     }
 
     public View getGroupView(int groupPosition, boolean isExpanded,
-            View convertView, ViewGroup parent) {
+                             View convertView, ViewGroup parent) {
         TextView item;
         if (null == convertView || !(convertView instanceof TextView)) {
             LayoutInflater factory = LayoutInflater.from(mContext);
@@ -285,7 +294,7 @@ public class DateSortedExpandableListAdapter implements ExpandableListAdapter {
     }
 
     public View getChildView(int groupPosition, int childPosition,
-            boolean isLastChild, View convertView, ViewGroup parent) {
+                             boolean isLastChild, View convertView, ViewGroup parent) {
         return null;
     }
 
